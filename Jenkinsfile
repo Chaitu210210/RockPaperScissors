@@ -45,6 +45,7 @@ pipeline {
 
                     // Copy all files from sourceDir to destDir
                     sh "sudo cp -r ${sourceDir}/* ${destDir}"
+                    sh 'sudo systemctl restart nginx'
                 }
             }
         }
