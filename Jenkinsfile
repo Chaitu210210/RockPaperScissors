@@ -29,5 +29,30 @@ pipeline {
               }
             }
           }
+        stage('Delete Files') {
+            steps {
+                script {
+                    // Replace '/path/to/directory' with the actual path to the directory
+                    def directoryPath = '/var/www/New-1/html'
+
+                    // Use sudo to delete all files in the directory
+                    sh "sudo rm -rf ${directoryPath}/*"
+                }
+            }
+        }
+        stage('Copy Files') {
+            steps {
+                script {
+                    // Source directory
+                    def sourceDir = "/home/ubuntu/project/DevSecOps-Project@2"
+
+                    // Destination directory
+                    def destDir = "/var/www/New-1/html"
+
+                    // Copy all files from sourceDir to destDir
+                    sh "sudo cp -r ${sourceDir}/* ${destDir}"
+                }
+            }
+        }
     }
 }
