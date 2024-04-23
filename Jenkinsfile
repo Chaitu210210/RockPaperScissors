@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Checkout from Git') {
             steps {
-               git branch: 'main', credentialsId: '3d5f286e-1309-4b36-9d17-d7b337de1c6d', url: 'https://github.com/Chaitu210210/RockPaperScissors.git'
+               git branch: 'main', credentialsId: '3d5f286e-1309-4b36-9d17-d7b337de1c6d', url: 'https://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@github.com/Chaitu210210/RockPaperScissors.git'
         }
         }     
         stage("Sonarqube Analysis") {
