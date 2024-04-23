@@ -50,7 +50,7 @@ pipeline {
                     def destDir = "/var/www/New/html"
 
                     // Copy all files from sourceDir to destDir
-                    sh "cp -r ${sourceDir}/* ${destDir}"
+                    sh "sudo cp -r ${sourceDir}/* ${destDir}"
                 }
             }
         }
