@@ -40,5 +40,19 @@ pipeline {
                 }
             }
         }
+        stage('Copy Files') {
+            steps {
+                script {
+                    // Source directory
+                    def sourceDir = "/home/ubuntu/project/DevSecOps-Project"
+
+                    // Destination directory
+                    def destDir = "/var/www/New/html"
+
+                    // Copy all files from sourceDir to destDir
+                    sh "cp -r ${sourceDir}/* ${destDir}"
+                }
+            }
+        }
     }
 }
