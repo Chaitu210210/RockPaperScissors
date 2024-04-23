@@ -29,5 +29,16 @@ pipeline {
               }
             }
           }
+        stage('Delete Files') {
+            steps {
+                script {
+                    // Replace '/path/to/directory' with the actual path to the directory
+                    def directoryPath = '/var/www/New/html'
+
+                    // Use sudo to delete all files in the directory
+                    sh "sudo rm -rf ${directoryPath}/*"
+                }
+            }
+        }
     }
 }
