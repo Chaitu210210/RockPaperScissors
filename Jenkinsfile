@@ -11,14 +11,14 @@ pipeline {
         }
         stage('Checkout from Git') {
             steps {
-                git branch: 'main', credentialsId: '3d5f286e-1309-4b36-9d17-d7b337de1c6d', url: 'https://github.com/Chaitu210210/RockPaperScissors.git'
+                git branch: 'DEV', credentialsId: '3d5f286e-1309-4b36-9d17-d7b337de1c6d', url: 'https://github.com/Chaitu210210/RockPaperScissors.git'
             }
         }
         stage("Sonarqube Analysis") {
             steps {
                 withSonarQubeEnv('sonar-server') {
-                    sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=One \
-                    -Dsonar.projectKey=One'''
+                    sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=One-1 \
+                    -Dsonar.projectKey=One-1'''
                 }
             }
         }
