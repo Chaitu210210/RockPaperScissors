@@ -17,7 +17,7 @@ pipeline {
                     sh 'sudo rm -rf /home/ubuntu/DevSecOps-main/*'
                     sh 'sudo ls -l /home/ubuntu/DevSecOps-main/'
                        
-                    def sourceDir = "/var/lib/jenkins/workspace/RockPaperScissors_main"
+                    def sourceDir = "/var/lib/jenkins/workspace/Desecops_main"
 
                     // Destination directory
                     def destDir = "/home/ubuntu/DevSecOps-main"
