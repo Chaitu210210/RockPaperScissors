@@ -61,7 +61,7 @@ pipeline {
                     // Remove existing symlink if it exists
                     sh 'rm -f /var/lib/jenkins/workspace'
                     // Create a new symlink
-                    sh 'sudo ln -s /home/ubuntu /var/lib/jenkins/workspace/DevSecOps-Project_main/mycode'
+                    sh 'sudo ln -s /home/ubuntu /var/lib/jenkins/workspace/Rock-Paper-Scissors_DEV'
                 }
             }
         }
