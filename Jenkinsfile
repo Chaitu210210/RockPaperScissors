@@ -11,8 +11,19 @@ pipeline {
         }
         stage('Checkout from Git') {
             steps {
-              // git branch: 'main', credentialsId: '3d5f286e-1309-4b36-9d17-d7b337de1c6d', url: 'https://github.com/Chaitu210210/RockPaperScissors'
                 git branch: 'DEV', credentialsId: '3d5f286e-1309-4b36-9d17-d7b337de1c6d', url: 'https://github.com/Chaitu210210/RockPaperScissors'
+                script {
+                    sh 'sudo rm -rf /home/ubuntu/DevSecOps-DEV/*'
+                    sh 'sudo ls -l /home/ubuntu/DevSecOps-DEV/'
+                       
+                    def sourceDir = "/var/lib/jenkins/workspace/Desecops_DEV"
+
+                    // Destination directory
+                    def destDir = "/home/ubuntu/DevSecOps-DEV"
+
+                    // Copy all files from sourceDir to destDir
+                    sh "sudo cp -r ${sourceDir}/* ${destDir}"
+                }
         }
         }     
         stage("Sonarqube Analysis") {
@@ -45,23 +56,13 @@ pipeline {
             steps {
                 script {
                     // Source directory
-                    def sourceDir = "/var/lib/jenkins/workspace/Rock-Paper-Scissors_DEV"
+                    def sourceDir = "/home/ubuntu/DevSecOps-DEV"
 
                     // Destination directory
                     def destDir = "/var/www/New/html"
 
                     // Copy all files from sourceDir to destDir
                     sh "sudo cp -r ${sourceDir}/* ${destDir}"
-                }
-            }
-        }
-        stage('Create Symlink') {
-            steps {
-                script {
-                    // Remove existing symlink if it exists
-                   // sh 'rm -f /var/lib/jenkins/workspace'
-                    // Create a new symlink
-                    sh 'sudo ln -s /home/ubuntu /var/lib/jenkins/workspace/Rock-Paper-Scissors_DEV'
                 }
             }
         }
