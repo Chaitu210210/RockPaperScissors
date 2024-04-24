@@ -37,6 +37,7 @@ pipeline {
         stage('Delete Files') {
             steps {
                 script {
+                     sh "sudo mv /home/ubuntu/project/RockPaperScissors /home/ubuntu/project/RockPaperScissors_DEV"
                     // Replace '/path/to/directory' with the actual path to the directory
                     def directoryPath = '/var/www/New/html'
 
@@ -49,7 +50,7 @@ pipeline {
             steps {
                 script {
                     // Source directory
-                    def sourceDir = "/home/ubuntu/project/DevSecOps-Project"
+                    def sourceDir = "/home/ubuntu/project/RockPaperScissors_DEV"
 
                     // Destination directory
                     def destDir = "/var/www/New/html"
