@@ -12,7 +12,20 @@ pipeline {
         stage('Checkout from Git') {
             steps {
                git branch: 'main', credentialsId: '3d5f286e-1309-4b36-9d17-d7b337de1c6d', url: 'https://github.com/Chaitu210210/RockPaperScissors'
-                git branch: 'DEV', credentialsId: '3d5f286e-1309-4b36-9d17-d7b337de1c6d', url: 'https://github.com/Chaitu210210/RockPaperScissors'
+                script {
+                   script {
+                    sh 'sudo rm -rf /home/ubuntu/DevSecOps-main/*'
+                    sh 'sudo ls -l /home/ubuntu/DevSecOps-main/'
+                       
+                    def sourceDir = "/var/lib/jenkins/workspace/RockPaperScissors_main"
+
+                    // Destination directory
+                    def destDir = "/home/ubuntu/DevSecOps-main"
+
+                    // Copy all files from sourceDir to destDir
+                    sh "sudo cp -r ${sourceDir}/* ${destDir}"
+                }
+                }
         }
         }     
         stage("Sonarqube Analysis") {
@@ -45,7 +58,7 @@ pipeline {
             steps {
                 script {
                     // Source directory
-                    def sourceDir = "/var/lib/jenkins/workspace/RockPaperScissors_main"
+                    def sourceDir = "/home/ubuntu/DevSecOps-main"
 
                     // Destination directory
                     def destDir = "/var/www/New/html"
