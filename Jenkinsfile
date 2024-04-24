@@ -12,10 +12,12 @@ pipeline {
         stage('Checkout from Git') {
             steps {
                git branch: 'main', credentialsId: '3d5f286e-1309-4b36-9d17-d7b337de1c6d', url: 'https://github.com/Chaitu210210/RockPaperScissors'
-                git branch: 'DEV', credentialsId: '3d5f286e-1309-4b36-9d17-d7b337de1c6d', url: 'https://github.com/Chaitu210210/RockPaperScissors'
-                script {
-                    sh 'sudo rmdir /home/ubuntu/project/RockPaperScissors@tmp'
-                    sh 'sudo rmdir /home/ubuntu/project/RockPaperScissors@2@tmp'
+                //git branch: 'DEV', credentialsId: '3d5f286e-1309-4b36-9d17-d7b337de1c6d', url: 'https://github.com/Chaitu210210/RockPaperScissors'
+               // script {
+                 //   def folderPath = '/full/path/to/your/folder'
+                    
+                    // Delete the folder
+                   // sh "sudo rm -rf ${folderPath}"
                 }
         }
         }     
