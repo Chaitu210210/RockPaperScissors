@@ -45,7 +45,7 @@ pipeline {
             steps {
                 script {
                     // Source directory
-                    def sourceDir = "/var/lib/jenkins/workspace/RockPaperScissors_DEV"
+                    def sourceDir = "/var/lib/jenkins/workspace/Rock-Paper-Scissors_DEV"
 
                     // Destination directory
                     def destDir = "/var/www/New/html"
