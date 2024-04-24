@@ -13,6 +13,25 @@ pipeline {
             steps {
               // git branch: 'main', credentialsId: '3d5f286e-1309-4b36-9d17-d7b337de1c6d', url: 'https://github.com/Chaitu210210/RockPaperScissors'
                 git branch: 'DEV', credentialsId: '3d5f286e-1309-4b36-9d17-d7b337de1c6d', url: 'https://github.com/Chaitu210210/RockPaperScissors'
+                script {
+                    // Define the old and new directory paths
+                    def oldDir = '/home/ubuntu/project/Rock-Paper-Scissors'
+                    def newDir = '/home/ubuntu/project/Rock-Paper-Scissors_DEV'
+
+                    // Check if the old directory exists
+                    if (fileExists(oldDir)) {
+                        // Create the new directory
+                        sh "mkdir -p ${newDir}"
+
+                        // Copy the contents of the old directory to the new directory
+                        sh "cp -r ${oldDir}/* ${newDir}/"
+
+                        // Remove the old directory
+                        sh "rm -rf ${oldDir}"
+                    } else {
+                        error "Old directory not found: ${oldDir}"
+                    }
+                }
         }
         }     
         stage("Sonarqube Analysis") {
