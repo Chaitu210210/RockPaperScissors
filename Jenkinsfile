@@ -13,6 +13,10 @@ pipeline {
             steps {
               // git branch: 'main', credentialsId: '3d5f286e-1309-4b36-9d17-d7b337de1c6d', url: 'https://github.com/Chaitu210210/RockPaperScissors'
                 git branch: 'DEV', credentialsId: '3d5f286e-1309-4b36-9d17-d7b337de1c6d', url: 'https://github.com/Chaitu210210/RockPaperScissors'
+                script {
+                    // Rename the directory
+                    sh "sudo mv /home/ubuntu/project/RockPaperScissors /home/ubuntu/project/RockPaperScissors_DEV"
+                }
         }
         }     
         stage("Sonarqube Analysis") {
