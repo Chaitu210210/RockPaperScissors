@@ -13,10 +13,6 @@ pipeline {
             steps {
               // git branch: 'main', credentialsId: '3d5f286e-1309-4b36-9d17-d7b337de1c6d', url: 'https://github.com/Chaitu210210/RockPaperScissors'
                 git branch: 'DEV', credentialsId: '3d5f286e-1309-4b36-9d17-d7b337de1c6d', url: 'https://github.com/Chaitu210210/RockPaperScissors'
-               // script {
-                    // Rename the directory
-                 //   sh "sudo mv /home/ubuntu/project/RockPaperScissors /home/ubuntu/project/RockPaperScissors_DEV"
-                //}
         }
         }     
         stage("Sonarqube Analysis") {
@@ -37,7 +33,6 @@ pipeline {
         stage('Delete Files') {
             steps {
                 script {
-                     sh "sudo mv /home/ubuntu/project/RockPaperScissors /home/ubuntu/project/RockPaperScissors_DEV"
                     // Replace '/path/to/directory' with the actual path to the directory
                     def directoryPath = '/var/www/New/html'
 
@@ -50,7 +45,7 @@ pipeline {
             steps {
                 script {
                     // Source directory
-                    def sourceDir = "/home/ubuntu/project/RockPaperScissors_DEV"
+                    def sourceDir = "/var/lib/jenkins/workspace/RockPaperScissors_DEV"
 
                     // Destination directory
                     def destDir = "/var/www/New/html"
